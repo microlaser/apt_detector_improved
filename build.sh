@@ -1,9 +1,9 @@
 #!/bin/bash
-# build.sh — macOS APT Detector v12.0
+# build.sh — macOS APT Detector v15.0
 set -e
 
-BINARY="macos_apt_detector_v13"
-SOURCE="macos_apt_detector_v13.c"
+BINARY="macos_apt_detector_v15"
+SOURCE="macos_apt_detector_v15.c"
 
 echo "[*] Building ${BINARY}..."
 
@@ -19,8 +19,5 @@ clang \
     -Wextra \
     -Wno-unused-parameter
 
-if [ $? -eq 0 ]; then
-    chmod +x "${BINARY}"
-    echo "[+] Build complete."
-    echo "[+] Run with: sudo ./${BINARY}"
-fi
+chmod +x "${BINARY}"
+echo "[+] Build complete. Run with: sudo ./${BINARY}"
