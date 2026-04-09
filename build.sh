@@ -2,8 +2,8 @@
 # build.sh — macOS APT Detector v12.0
 set -e
 
-BINARY="macos_apt_detector_v12"
-SOURCE="macos_apt_detector_v12.c"
+BINARY="macos_apt_detector_v13"
+SOURCE="macos_apt_detector_v13.c"
 
 echo "[*] Building ${BINARY}..."
 

@@ -1,10 +1,18 @@
 #ifndef APT_DETECTOR_H
 #define APT_DETECTOR_H
 
+/*
+ * apt_detector.h — macOS APT Detector
+ * Version : 13.0
+ * Changes : Added sys/xattr.h for quarantine xattr checks (M8).
+ *           Added binary_is_apple_signed() prototype for M3 tap filter.
+ */
+
 #include <CoreFoundation/CoreFoundation.h>
 #include <Security/Security.h>
 #include <CoreGraphics/CoreGraphics.h>
 #include <libproc.h>
+#include <sys/xattr.h>
 
 /* ── Risk Score Thresholds ─────────────────────────────────────── */
 #define SCORE_INFO      0
@@ -53,4 +61,11 @@ int  run_network_check(void);
 int  run_quarantine_check(void);
 void report_final_score(ScanReport *report);
 
-#endif /* APT_DETECTOR_H */
+/*
+ * Signature helpers — defined static in the .c file; prototyped here
+ * so other translation units can call them if the project is ever split.
+ */
+int binary_is_signed(const char *path);        /* any valid sig   */
+int binary_is_apple_signed(const char *path);  /* anchor apple    */
+
+#endif /* APT_DETECTOR_H — v13.0 */
